@@ -7,21 +7,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Enter working directory
-      run: cd web
     - name: Copy .env
+      working-directory: ./web
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Install Dependencies
+      working-directory: ./web
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
     - name: Generate key
+      working-directory: ./web
       run: php artisan key:generate
     - name: Directory Permissions
+      working-directory: ./web
       run: chmod -R 777 storage bootstrap/cache
     - name: Create Database
+      working-directory: ./web
       run: |
         mkdir -p database
         touch database/database.sqlite
     - name: Execute tests (Unit and Feature tests) via PHPUnit
+      working-directory: ./web
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
