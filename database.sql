@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `accessories-vault`.`device_subject` (
   `devicesub_rentable` TINYINT(1) UNSIGNED NULL DEFAULT NULL,
   `create_timestamp` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`devicesub_id`),
-  INDEX `ToolType_idx` (`devicesub_type` ASC) VISIBLE,
+  INDEX `ToolType_idx` (`devicesub_type` ASC) ,
   CONSTRAINT `device-devicetype`
     FOREIGN KEY (`devicesub_type`)
     REFERENCES `accessories-vault`.`device_type` (`type_id`))
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `accessories-vault`.`device_list` (
   `device_lock` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0',
   `add_timestamp` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`device_id`),
-  INDEX `device-devicesubject_idx` (`device_subjectid` ASC) VISIBLE,
+  INDEX `device-devicesubject_idx` (`device_subjectid` ASC) ,
   CONSTRAINT `device-devicesubject`
     FOREIGN KEY (`device_subjectid`)
     REFERENCES `accessories-vault`.`device_subject` (`devicesub_id`))
@@ -84,11 +84,12 @@ CREATE TABLE IF NOT EXISTS `accessories-vault`.`maintenance_request` (
   `req_id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `req_deviceid` INT(10) UNSIGNED NOT NULL,
   `req_symptom` VARCHAR(150) NULL DEFAULT NULL,
+  `req_location` VARCHAR(150) NULL DEFAULT NULL,
   `req_closed` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0',
   `req_priority` MEDIUMINT(4) UNSIGNED NULL DEFAULT NULL,
   `req_timestamp` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`req_id`),
-  UNIQUE INDEX `req_deviceid_UNIQUE` (`req_deviceid` ASC) VISIBLE,
+  UNIQUE INDEX `req_deviceid_UNIQUE` (`req_deviceid` ASC) ,
   CONSTRAINT `maintaindeviceid`
     FOREIGN KEY (`req_deviceid`)
     REFERENCES `accessories-vault`.`device_list` (`device_id`))

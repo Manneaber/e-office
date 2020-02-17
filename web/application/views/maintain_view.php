@@ -79,7 +79,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						echo '	<div class="col">' . $opening[$i]['req_deviceid'] . '</div>';
 						echo '	<div class="col">' . $opening[$i]['devicesub_name'] . '</div>';
 						echo '	<div class="col">' . $opening[$i]['req_symptom'] . '</div>';
-						echo '	<div class="col hidden">SC09</div>';
+						echo '	<div class="col hidden">' . $opening[$i]['req_location'] . '</div>';
 						echo '</div>';
 					}
 					?>
@@ -105,7 +105,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						echo '	<div class="col">' . $closed[$i]['req_deviceid'] . '</div>';
 						echo '	<div class="col">' . $closed[$i]['devicesub_name'] . '</div>';
 						echo '	<div class="col">' . $closed[$i]['req_symptom'] . '</div>';
-						echo '	<div class="col hidden">SC09</div>';
+						echo '	<div class="col hidden">' . $closed[$i]['req_location'] . '</div>';
 						echo '</div>';
 					}
 					?>
