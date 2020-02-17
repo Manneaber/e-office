@@ -72,7 +72,7 @@ class Admin extends CI_Controller
 			http_response_code(200);
 			echo json_encode(array('code' => 200, 'data' => 'done'));
 		} else {
-			$this->db->select('req_id, req_deviceid, req_symptom, req_closed, req_priority, devicesub_name');
+			$this->db->select('req_id, req_deviceid, req_symptom, req_closed, req_priority, devicesub_name, req_location');
 			$this->db->from('maintenance_request');
 			$this->db->join('device_list', 'device_list.device_id = maintenance_request.req_deviceid');
 			$this->db->join('device_subject', 'device_list.device_subjectid = device_subject.devicesub_id');
