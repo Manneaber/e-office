@@ -1,0 +1,55 @@
+* {
+    font-family: 'Sarabun', sans-serif;
+}
+
+.list-title {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #cccccc;
+}
+
+.list-group-item {
+    padding: 0;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+.row {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+div#doneList>div>.hidden, div.list-title>.row>.hidden {
+    display: none;
+}
+
+.blue-background-class {
+    background-color: #C8EBFB;
+}
+
+.red-background-class {
+    background-color: rgb(247, 166, 166);
+}
+
+.fixed-top {
+    transition: all 0.5s;
+}
+
+@media (max-width: 767.98px) {
+    .fixed-top {
+        position: unset;
+        top: unset;
+        right: unset;
+        left: unset;
+    }
+}
+
+@media (min-width: 768px) {
+    .fixed-top {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: unset;
+        padding-top: 30px;
+    }
+}
