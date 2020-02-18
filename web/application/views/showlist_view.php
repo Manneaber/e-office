@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<a class="nav-link" href="#">Show list<span class="sr-only">(current)</span></a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="<?php echo base_url();?>web/index.php/insertdata">Add</a>
+				<a class="nav-link" href="<?php echo base_url('insertdata');?>">Add</a>
 			</li>
 			</ul>
 		</div>
@@ -34,7 +34,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<div class="row">
     	<div class="col" >
-			<a href="<?php echo base_url();?>web/index.php/insertdata" class="btn btn-info" role="button" style="float:right" name="Addequipment">Add equipment</a>
+			<a href="<?php echo base_url('insertdata');?>" class="btn btn-info" role="button" style="float:right" name="Addequipment">Add equipment</a>
 		</div>
 	</div>
 
@@ -63,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<td><?php echo $rows->devicesub_type;?></td>
 				<td><?php echo $rows->devicesub_rentable;?></td>
 				<td><?php echo $rows->create_timestamp;?></td>
-				<td><a href="<?php echo base_url();?>web/index.php/insertdata/edit/<?php echo $rows->devicesub_id;?>" class="badge badge-light" name="edit">Edit</a></td>
+				<td><a href="<?php echo base_url('insertdata/edit/'.$rows->devicesub_id);?>" class="badge badge-light" name="edit">Edit</a></td>
 				<td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#showModelPopupDelete">Delete</button></td>
 			</tr>
 			<?php } ?>

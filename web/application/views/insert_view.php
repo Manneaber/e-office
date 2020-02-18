@@ -17,7 +17,7 @@
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
 			<li class="nav-item ">
-				<a class="nav-link" href="<?php echo base_url()?>web/index.php">Show list</a>
+				<a class="nav-link" href="<?php echo base_url()?>">Show list</a>
 			</li>
 			<li class="nav-item active">
 				<a class="nav-link" href="#">Add</a>
@@ -36,7 +36,7 @@
     <h4>Add  Computer equipmen</h4>
     <br>
 
-    <form action="<?php echo base_url();?>web/index.php/Insertdata/adding" method="post" >
+    <form action="<?php echo base_url('Insertdata/adding');?>" method="post" >
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-10">
@@ -74,7 +74,7 @@
     </form>
 
     <?php echo br(6);?>
-    <a class="btn btn-dark" name="back" href="<?php echo base_url()?>web/index.php" role="button">Back</a>
+    <a class="btn btn-dark" name="back" href="<?php echo base_url()?>" role="button">Back</a>
 
 
 </div>
