@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
 			<li class="nav-item ">
-				<a class="nav-link" href="<?php echo base_url()?>web/index.php">Show list</a>
+				<a class="nav-link" href="<?php echo base_url()?>">Show list</a>
 			</li>
 			<li class="nav-item active">
 				<a class="nav-link" href="#">Edit</a>
@@ -36,7 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <h4>Update Computer equipment</h4>
     <br>
 
-    <form action="<?php echo base_url();?>web/index.php/Insertdata/editdata" method="post" >
+    <form action="<?php echo base_url('Insertdata/editdata');?>" method="post" >
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-10">
@@ -73,7 +73,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </form>
 
     <?php echo br(6);?>
-    <a class="btn btn-dark" href="<?php echo base_url()?>web/index.php" role="button">Back</a>
+    <a class="btn btn-dark" href="<?php echo base_url()?>" role="button">Back</a>
 
 
 </div>
