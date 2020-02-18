@@ -70,8 +70,10 @@ class Typedevice_model extends CI_Model
 	{
 		$this->db->select('*');
 		$this->db->from('device_subject');
+		$this->db->join('device_type', 'device_type.type_id = device_subject.devicesub_type');
 		$this->db->where('devicesub_id',$devicesub_id);
 		$query=$this->db->get();
+		
 		if($query->num_rows() > 0 )
 		{
 			$data = $query->row();
