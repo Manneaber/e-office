@@ -39,26 +39,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <h4>Add Computer equipment</h4>
         <br>
 
-        <form action="<?php echo base_url('Insertdata/adding'); ?>" method="post">
+        <form action="<?php echo base_url('Showlist/addsub/post'); ?>" method="post">
             <div class="form-group row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Name</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="devicesub_name" name="devicesub_name" placeholder="Name of equipments" required>
                 </div>
             </div>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Type</label>
-                <div class="col-sm-10">
-                    <div class="form-group">
-                        <select class="form-control" id="devicesub_type" name="devicesub_type">
-                            <?php foreach ($query as $row) { ?>
-                                <option value="<?= $row->type_id ?>"><?= $row->type_name ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                </div>
-
-            </div>
+            <input type="text" name="devicesub_type" id="devicesub_type" value="<?=$typeid?>" hidden>
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Borrowing status</label>
                 <div class="col-sm-10">

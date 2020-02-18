@@ -12,16 +12,122 @@ class Showlist extends CI_Controller
 
     public function index()
     {
-        $data['query'] = $this->typedevice_model->showdataDevicesubject();
+        $id = $this->input->get('typeid');
 
-        /*echo '<pre>';
-        print_r($data);
-        echo '</pre>';
-        exit;*/
+        if ($id == null) {
+            die();
+        }
+
+        $this->db->select('*');
+        $this->db->from('device_subject');
+        $this->db->where('devicesub_type', $id);
+        $data['query'] = $this->db->get()->result_array();
+        $data['tid'] = $id;
 
         $this->load->view('css');
         $this->load->view('showsub_view', $data);
         $this->load->view('js');
+    }
+
+    public function editsub($id = "index")
+    {
+        if ($id == "post") {
+            $data = $this->input->post(array('devicesub_type', 'devicesub_name', 'devicesub_rentable'), TRUE);
+
+            if (
+                $data['devicesub_type'] == null || $data['devicesub_name'] == null
+                || $data['devicesub_rentable'] == null
+            ) {
+                header('Content-Type: application/json');
+                http_response_code(400);
+                die(json_encode(array('code' => 400, 'data' => 'unmeet requirement')));
+            }
+
+            $this->db->set('devicesub_name', $data['devicesub_name']);
+            $this->db->set('devicesub_rentable', $data['devicesub_rentable']);
+            $this->db->where('devicesub_type', $data['devicesub_type']);
+            $this->db->update('device_subject');
+
+            if ($this->db->error()['code'] != 0) {
+                header('Content-Type: application/json');
+                http_response_code(500);
+                die(json_encode(array('code' => 500, 'data' => 'an error occurred when updating database')));
+                redirect('Showlist/list/' . $data['subid']);
+            }
+
+            http_response_code(200);
+            echo json_encode(array('code' => 200, 'data' => 'done'));
+            redirect('/');
+        } else {
+            $id = $this->input->get('id');
+
+            if ($id == null) {
+                die();
+            }
+
+            $this->db->select('*');
+            $this->db->from('device_subject');
+            $this->db->where('devicesub_id', $id);
+
+            $q = $this->db->get()->result_array();
+
+            $this->load->view('css');
+            $this->load->view('edit_view', array('query' => $q[0]));
+            $this->load->view('js');
+        }
+    }
+
+    public function deletesub($id)
+    {
+        $this->db->delete('device_subject', array('devicesub_id' => $id));
+        $url = $_SERVER['HTTP_REFERER'];
+
+        redirect($url);
+    }
+
+    public function addsub($id = "index")
+    {
+        if ($id == "post") {
+
+            $data = $this->input->post(array('devicesub_name', 'devicesub_type', 'devicesub_rentable'), TRUE);
+
+            if (
+                $data['devicesub_name'] == null || $data['devicesub_type'] == null
+                || $data['devicesub_rentable'] == null
+            ) {
+                header('Content-Type: application/json');
+                http_response_code(400);
+                die(json_encode(array('code' => 400, 'data' => 'unmeet requirement')));
+            }
+
+            $this->db->insert('device_subject', array(
+                "devicesub_name" => $data['devicesub_name'],
+                "devicesub_type" => $data['devicesub_type'],
+                "devicesub_rentable" => $data['devicesub_rentable'],
+                "create_timestamp" => "CURRENT_TIMESTAMP"
+            ));
+
+            if ($this->db->error()['code'] != 0) {
+                header('Content-Type: application/json');
+                http_response_code(500);
+                die(json_encode(array('code' => 500, 'data' => 'an error occurred when updating database')));
+                redirect('Showlist?typeid=' . $data['devicesub_type']);
+            }
+
+            http_response_code(200);
+            echo json_encode(array('code' => 200, 'data' => 'done'));
+            redirect('Showlist?typeid=' . $data['devicesub_type']);
+        } else {
+            $id = $this->input->get('id');
+
+            if ($id == null) {
+                die();
+            }
+
+            $this->load->view('css');
+            $this->load->view('insert_view', array("typeid" => $id));
+            $this->load->view('js');
+        }
     }
 
     public function list($id)

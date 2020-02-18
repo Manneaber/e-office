@@ -41,7 +41,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<input type="text" value="<?= $devicesub_id ?>" id="subid" name="subid" hidden>
 					<button class="btn btn-info" role="button" style="float:right" name="Addequipment" type="submit">Add Device</button>
 				</form>
-				<a href="<?php echo base_url('showlist'); ?>" class="btn btn-link" role="button" style="float:right" name="Addequipment">Back</a>
+				<a href="<?php echo base_url('showlist?typeid=' . $devicesub_id); ?>" class="btn btn-link" role="button" style="float:right" name="Addequipment">Back</a>
 			</div>
 		</div>
 
@@ -68,7 +68,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						<td><?php echo $rows['device_id']; ?></td>
 						<td><?php echo ($rows['device_status'] == 0 ? 'true' : 'false'); ?></td>
 						<td><?php echo ($rows['device_lock'] == 1 ? 'true' : 'false'); ?></td>
-						<td><a href="<?php echo base_url('showlist/editdevice/' . $rows['device_id']); ?>" type="button" class="btn btn-warning btn-sm" name="edit">Edit</a></td>
+						<td><a href="<?php echo base_url('showlist/editdevice' . $rows['device_id']); ?>" type="button" class="btn btn-warning btn-sm" name="edit">Edit</a></td>
 						<td><a class="btn btn-danger btn-sm" href="<?= base_url('showlist/remove/' . $rows['device_id']) ?>">Delete</a></td>
 					</tr>
 				<?php } ?>

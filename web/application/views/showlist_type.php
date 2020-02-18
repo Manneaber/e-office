@@ -32,53 +32,46 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 
 	<div class="container">
+
+		<div class="row">
+			<div class="col">
+				<form action="<?php echo base_url('Showlist_type/add'); ?>" method="post">
+					<button class="btn btn-info" role="button" style="float:right" name="Addequipment" type="submit">Add Type</button>
+				</form>
+			</div>
+		</div>
+
+		<br>
+
 		<!--table list-->
 		<table class="table table-bordered">
 			<thead>
 				<tr>
-                    <th scope="col">Type ID</th>
-                    <th scope="col">Type Name</th>
-                    <th scope="col">Type rentable</th>
-                    <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
+					<th scope="col">Type ID</th>
+					<th scope="col">Type Name</th>
+					<th scope="col">Is Rentable</th>
+					<th scope="col">Edit</th>
+					<th scope="col">Delete</th>
+					<th scope="col">View</th>
 				</tr>
 			</thead>
 
 			<tbody>
 				<?php
-				foreach ($device_list as $rows) {
+				foreach ($query as $rows) {
 				?>
 					<tr>
-						
+						<td><?php echo $rows['type_id']; ?></td>
+						<td><?php echo $rows['type_name']; ?></td>
+						<td><?php echo ($rows['type_rentable'] == 1 ? 'true' : 'false'); ?></td>
+						<td><a href="<?php echo base_url('Showlist_type/edit/' . $rows['type_id']); ?>" type="button" class="btn btn-warning btn-sm" name="edit">Edit</a></td>
+						<td><a class="btn btn-danger btn-sm" href="<?= base_url('Showlist_type/remove/' . $rows['type_id']) ?>">Delete</a></td>
+						<td><a class="btn btn-success btn-sm" href="<?= base_url('Showlist?typeid=' . $rows['type_id']) ?>">View</a></td>
 					</tr>
 				<?php } ?>
 			</tbody>
 
 		</table>
-
-		<!--show model popup when click delete button-->
-		<div class="modal fade" id="showModelPopupDelete" tabindex="-1" role="dialog" aria-labelledby="showModelPopupDeleteLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="showModelPopupDeleteLabel">Modal title</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						Do you want to delete equipment?
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-						<button type="button" class="btn btn-primary">Yes</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-
 	</div>
 
 </body>

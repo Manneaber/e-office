@@ -34,7 +34,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<div class="row">
     	<div class="col" >
-			<a href="<?php echo base_url('insertdata');?>" class="btn btn-info" role="button" style="float:right" name="Addequipment">Add equipment</a>
+			<a href="<?php echo base_url('Showlist/addsub?id=' . $tid);?>" class="btn btn-info" role="button" style="float:right" name="Addequipment">Add equipment</a>
+			<a href="<?php echo base_url(''); ?>" class="btn btn-link" role="button" style="float:right" name="Addequipment">Back</a>
 		</div>
 	</div>
 
@@ -57,40 +58,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<tbody>
 		<?php foreach ($query as $rows) {?>
 			<tr>
-				<td><?php echo $rows->devicesub_id;?></td>
-				<td><?php echo $rows->devicesub_name;?></td>
-				<td><?php echo ($rows->devicesub_rentable == 1 ? 'true' : 'false');?></td>
-				<td><a href="<?php echo base_url('insertdata/edit/'.$rows->devicesub_id);?>" type="button" class="btn btn-warning btn-sm" name="edit">Edit</a></td>
-				<td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#showModelPopupDelete">Delete</button></td>
-				<td><a class="btn btn-primary btn-sm" href="<?=base_url('Showlist/list/'.$rows->devicesub_id)?>">View List</button></td>
+				<td><?php echo $rows['devicesub_id'];?></td>
+				<td><?php echo $rows['devicesub_name'];?></td>
+				<td><?php echo ($rows['devicesub_rentable'] == 1 ? 'true' : 'false');?></ts>
+				<td><a href="<?php echo base_url('Showlist/editsub?id='.$rows['devicesub_id']);?>" type="button" class="btn btn-warning btn-sm" name="edit">Edit</a></td>
+				<td><a type="button" class="btn btn-danger btn-sm" href="<?=base_url("Showlist/deletesub/".$rows['devicesub_id'])?>">Delete</a></td>
+				<td><a class="btn btn-primary btn-sm" href="<?=base_url('Showlist/list/'.$rows['devicesub_id'])?>">View List</a></td>
 			</tr>
 			<?php } ?>
 		</tbody>
 	
 	</table>
-
-	<!--show model popup when click delete button-->
-	<div class="modal fade" id="showModelPopupDelete" tabindex="-1" role="dialog" aria-labelledby="showModelPopupDeleteLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="showModelPopupDeleteLabel">Modal title</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				Do you want to delete equipment?
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-				<button type="button" class="btn btn-primary">Yes</button>
-			</div>
-			</div>
-		</div>
-	</div>
-
-
 
 </div>
 
