@@ -1,0 +1,131 @@
+@font-face {
+    font-family: "Prompt";
+    src: url("../../fonts/Prompt-Regular.ttf") format("opentype");
+}
+
+* {
+    font-family: 'Prompt', Arial, Helvetica, sans-serif;
+}
+
+body {
+    overflow: hidden;
+}
+
+.side-nav-top {
+    height: 60px;
+    padding-right: unset;
+    background-color: #f3f3f3;
+    border-right: 1px solid #e6e6e6;
+}
+
+.logo-img {
+    padding: 10px;
+    height: 100%;
+}
+
+.logo-img>img {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.side-nav {
+    height: calc(100vh - 60px);
+    background-color: #f3f3f3;
+    border-right: 1px solid #e6e6e6;
+    padding: unset;
+    padding-top: 1.25rem;
+}
+
+.side-nav>ul>li {
+    background-color: unset;
+    padding: unset;
+    padding-left: 2rem;
+    padding-right: 1.25rem;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+}
+
+.side-nav>ul>li>a {
+    color: #333;
+}
+
+.side-nav>ul>li>a>.icon-img {
+    width: 35px;
+    height: 35px;
+    float: left;
+    background-color: #c0c0c0;
+}
+
+.side-nav>ul>li>a>.title {
+    line-height: 35px;
+    float: left;
+    padding-left: 10px;
+}
+
+.side-nav>ul>li>a>.action {
+    line-height: 35px;
+    float: right;
+    padding-left: 10px;
+    color: #c0c0c0;
+}
+
+.top-nav {
+    height: 60px;
+    background-color: #f3f3f3;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.top-nav-row {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 100%;
+    width: 100%;
+}
+
+.top-nav-row>div>.user {
+    width: 40px;
+    height: 40px;
+    padding-left: 5px;
+    padding-top: 5px;
+    background-color: #c0c0c0;
+}
+
+.top-nav-row>div>div.dropdown-menu {
+    float: right;
+}
+
+.top-nav-row:nth-last-child(1) {
+    padding-right: 15px;
+}
+
+.dropdown-menu-c {
+    position: absolute;
+    top: 45px;
+    right: 0;
+    background-color: #f3f3f3;
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.dropdown-menu-c>.dropdown-header {
+    margin-bottom: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.breadcrumb {
+    background-color: #ebebeb;
+    padding: unset;
+    padding-left: 15px;
+    padding-right: 15px;
+    line-height: 40px;
+    margin-bottom: unset;
+    width: 100%;
+}
+
+.body {
+    padding: 0rem;
+}
