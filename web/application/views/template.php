@@ -14,7 +14,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				<div class="col" style="height: 100%;">
 					<div class="top-nav-row float-left">
 						<ol class="breadcrumb">
-							<?=$path?>
+							<?= $path ?>
 						</ol>
 					</div>
 				</div>
@@ -47,21 +47,21 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					</a>
 				</li>
 				<li class="list-group-item">
-				<a href="#">
+					<a href="#">
 						<div class="icon-img rounded-circle"></div>
 						<div class="title">คลัง</div>
 						<div class="action">></div>
 					</a>
 				</li>
 				<li class="list-group-item">
-				<a href="#">
+					<a href="#">
 						<div class="icon-img rounded-circle"></div>
 						<div class="title">ซ่อมบำรุง</div>
 						<div class="action">></div>
 					</a>
 				</li>
 				<li class="list-group-item">
-				<a href="#">
+					<a href="#">
 						<div class="icon-img rounded-circle"></div>
 						<div class="title">ผู้ใช้บริการ</div>
 						<div class="action">></div>
@@ -70,7 +70,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			</ul>
 		</div>
 		<div class="col-md-9 col-lg-10 body">
-			<?=$body?>
+			<div style="overflow-y: scroll;">
+				<?= $body ?>
+			</div>
 		</div>
 	</div>
 </div>

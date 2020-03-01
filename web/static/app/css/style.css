@@ -7,8 +7,12 @@
     font-family: 'Prompt', Arial, Helvetica, sans-serif;
 }
 
-body {
-    overflow: hidden;
+body, html {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+
+    overflow-x: hidden;
 }
 
 .side-nav-top {
@@ -128,4 +132,9 @@ body {
 
 .body {
     padding: 0rem;
+}
+
+.body > div {
+    height: calc(100vh - 61px);
+    margin-right: 15px;
 }
