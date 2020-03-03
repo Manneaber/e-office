@@ -66,8 +66,9 @@
                         <div class="modal-body">
                             <form action="<?=base_url('Showtype/update')?>" method="post">
                                 <div class="form-group">
-                                    <label for="recipient-name" class="col-form-label">รหัสประเภทของครุภัณฑ์:</label>
-                                    <input type="text" class="form-control" id="type_id" required pattern="[0-9]{2}" name="type_id" value="<?=$row->type_id;?>">
+                                    <label for="recipient-name" class="col-form-label">รหัสประเภทของครุภัณฑ์:</label><br>
+                                    <label for="recipient-name" class="col-form-label"><?=$row->type_id;?></label>
+                                    <input type="hidden" class="form-control" id="type_id" required name="type_id" value="<?=$row->type_id;?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label">ประเภทของครุภัณฑ์:</label>
