@@ -65,9 +65,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <label for='location' class='col-form-label'>วันที่อัพเดท:</label>
       <input readonly type='text' class='form-control' name='location' value='$details->updated_timestamp'>
     </div>
-    <label for='location' class='col-form-label'>วันที่สร้าง:</label>
-      <input readonly type='text' class='form-control' name='location' value='$details->created_timestamp'>
-    </div>
   </div>";
   ?>
 </div>
