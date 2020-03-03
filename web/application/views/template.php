@@ -14,13 +14,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				<div class="col" style="height: 100%;">
 					<div class="top-nav-row float-left">
 						<?php
-							if (isset($back)) {
-								echo '<a href="'.$back.'" class="btn float-left btn-dark" style="height: 100%; margin-right: 15px;"><</a>';
-							}
+						if (isset($back)) {
+							echo '<a href="' . $back . '" class="btn float-left btn-dark" style="height: 100%; margin-right: 15px; border-radius: 50px;"><</a>';
+						}
 						?>
-						<ol class="breadcrumb float-left">
-							<?= $path ?>
-						</ol>
+						<div class="breadcrumb-main float-left">
+							<ol class="breadcrumb">
+								<?= $path ?>
+							</ol>
+						</div>
 					</div>
 				</div>
 				<div class="col-auto" style="height: 100%;">
