@@ -12,7 +12,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">ประเภทของครุภัณฑ์</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">เพิ่มประเภทของครุภัณฑ์</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -21,15 +21,15 @@
                     <form action="<?=base_url('Showtype/add_type')?>" method="POST">
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">รหัสประเภทของครุภัณฑ์:</label>
-                        <input type="text" class="form-control" id="type_id" name="type_id" >
+                        <input type="text" class="form-control" id="type_id" name="type_id" required>
                     </div>
                     <div class="form-group">
                         <label for="message-text" class="col-form-label">ประเภทของครุภัณฑ์:</label>
-                        <textarea class="form-control" id="type_name" name="type_name" ></textarea>
+                        <textarea class="form-control" id="type_name" name="type_name" required></textarea>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Send message</button>
+                        <button id="close" name="close" type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                        <button id="submit" name="submit" type="submit" class="btn btn-primary">ตกลง</button>
                     </div>
                     </form>
                 </div>
@@ -58,7 +58,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Edit message</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">แก้ไขประเภทของครุภัณฑ์</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -67,11 +67,11 @@
                             <form action="<?=base_url('Showtype/update')?>" method="post">
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">รหัสประเภทของครุภัณฑ์:</label>
-                                    <input type="text" class="form-control" id="type_id" name="type_id" value="<?=$row->type_id;?>">
+                                    <input type="text" class="form-control" id="type_id" required name="type_id" value="<?=$row->type_id;?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label">ประเภทของครุภัณฑ์:</label>
-                                    <textarea class="form-control" id="type_name" name="type_name"><?=$row->type_name;?></textarea>
+                                    <textarea class="form-control" id="type_name" name="type_name" required><?=$row->type_name;?></textarea>
                                 </div>
                                 <div class="modal-footer">
                                     <button id="close" name="close" type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
