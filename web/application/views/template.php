@@ -6,7 +6,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	<div class="row">
 		<div class="col-md-3 col-lg-2 d-none d-sm-none d-md-block side-nav-top">
 			<div class="logo-img">
-				<img src="https://cdn.shopify.com/shopifycloud/hatchful-web/assets/5332ffcb554a06a5ecd7351a5309f011.svg" draggable="false" />
+				<img src="<?= base_url('static/app/img/logo.png') ?>" draggable="false" />
 			</div>
 		</div>
 		<div class="col-md-9 col-lg-10 top-nav">
@@ -47,14 +47,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		<div class="col-md-3 col-lg-2 d-none d-sm-none d-md-block side-nav">
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item">
-					<a href="<?=base_url('')?>">
+					<a href="<?= base_url('') ?>">
 						<div class="icon-img rounded-circle"></div>
 						<div class="title">หน้าหลัก</div>
 						<div class="action">></div>
 					</a>
 				</li>
 				<li class="list-group-item">
-					<a href="<?=base_url('showtype')?>">
+					<a href="<?= base_url('showtype') ?>">
 						<div class="icon-img rounded-circle"></div>
 						<div class="title">คลัง</div>
 						<div class="action">></div>
