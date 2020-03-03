@@ -41,15 +41,25 @@ class Showtype extends CI_Controller {
 			echo 'ผิดพลาด';
 		}
 
-        $data = $this->Showtype_model->insert_type($type_id,$type_name);
+		$data = $this->Showtype_model->insert_type($type_id,$type_name);
+
 
 		if ($data == 0){
-		    redirect(base_url('showtype'));
+			echo '<script language="javascript" type="text/javascript"> 
+					alert("สำเร็จ");
+					window.location = "";
+				</script>';
+				exit;
         }else if($data == 1){
-			redirect(base_url('showtype'));
+			echo '<script language="javascript" type="text/javascript"> 
+					alert("ไม่สำเร็จ");
+					window.location = "";
+        		</script>';
+			exit;
 		}
-
+		
 	}
+	
 
 	public function update()
 	{
