@@ -8,26 +8,24 @@ class Device extends CI_Controller
     {
         parent::__construct();
         $this->load->database();
-        $this->load->helper('url');
         $this->load->model('main_model');
     }
 
-    public function index()
+    public function index($type_id)
     {
-        $this->load->helper('url');
-
-        $data['query'] = $this->main_model->fetch_data();
+        $data['type_id']=$type_id;
+        $data['type_name'] = $this->main_model->fetch_type_name($type_id);
+        $data['query'] = $this->main_model->fetch_subject($type_id);
 
         $this->load->view('header', ['title' => 'Home']);
         $this->load->view('template', [
             'body' => $this->load->view('device', $data,  TRUE),
             'path' => makePath([
-                'คลัง' => '#',
-                'ประเภท' => '#',
-                'อุปกรณ์' => '#',
+                'คลัง' => base_url('showtype'),
+                $data['type_name']->type_name => '#',
 
             ]),
-            'back' => "",
+            'back' => base_url('showtype'),
         ]);
 
         $this->load->view('bottom');

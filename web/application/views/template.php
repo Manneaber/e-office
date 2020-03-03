@@ -47,14 +47,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		<div class="col-md-3 col-lg-2 d-none d-sm-none d-md-block side-nav">
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item">
-					<a href="#">
+					<a href="<?=base_url('')?>">
 						<div class="icon-img rounded-circle"></div>
 						<div class="title">หน้าหลัก</div>
 						<div class="action">></div>
 					</a>
 				</li>
 				<li class="list-group-item">
-					<a href="#">
+					<a href="<?=base_url('showtype')?>">
 						<div class="icon-img rounded-circle"></div>
 						<div class="title">คลัง</div>
 						<div class="action">></div>

@@ -5,7 +5,7 @@
             <p class="text-center">คณะวิทยาศาสตร์ มหาวิทยาลัยขอนแก่น<br></p>
             <p class="d-xl-flex justify-content-xl-center align-items-xl-center">Faculty of Science,&nbsp;Khon Kaen&nbsp;University<br></p>
         </div>
-        <div class="but-increase">
+        <div class="but-increase" style="margin-bottom: 15px;">
             <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">เพิ่มประเภทของครุภัณฑ์</button>
 
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

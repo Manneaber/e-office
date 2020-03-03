@@ -40,6 +40,14 @@ class Main_model extends CI_Model
         return $query->result();
     }
 
+    public function get_device_type($type_id) {
+        $this->db->select('type_id, type_name');
+        $this->db->from('device_type');
+        $this->db->where('type_id', $type_id);
+        
+        return $this->db->get()->result();
+    }
+
    
     public function insert_name_deviceSub()
     {
@@ -58,12 +66,13 @@ class Main_model extends CI_Model
         {
             //True
             //echo 'adding success';
-            redirect(base_url('/type/devices/'.$data['sub_type']));
+            redirect(base_url('device/'.$data['sub_type']));
 
         }else
         {
             //False
             echo 'adding error';    
+            redirect(base_url('device/').$data['sub_type']);
         }
     }
 
@@ -102,11 +111,12 @@ class Main_model extends CI_Model
 		if($query)
 		{
             //echo 'update success';
-            redirect(base_url('/type/devices/').$data['sub_type']);
+            redirect(base_url('device/').$data['sub_type']);
             
 		}else
 		{
-			echo 'update error';
+            echo 'update error';
+            redirect(base_url('device/').$data['sub_type']);
 		}
 
 
@@ -132,11 +142,12 @@ class Main_model extends CI_Model
         if($query)
 		{
             //echo 'update success';
-            redirect(base_url('/type/devices/').$data['sub_type']);
+            redirect(base_url('device/').$data['sub_type']);
             
 		}else
 		{
-			echo 'update error';
+            echo 'update error';
+            redirect(base_url('device/').$data['sub_type']);
 		}
 
    }

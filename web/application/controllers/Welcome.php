@@ -8,10 +8,7 @@ class Welcome extends CI_Controller {
 		$this->load->view('template', [
 			'body' => $this->load->view('test', '', TRUE),
 			'path' => makePath([
-				'คลัง' => '#',
-				'โดรน' => '#',
-				'dji phantom 4' => '#',
-				'2020-SC09-152485187' => '#',
+				'หน้าหลัก' => '#',
 			])
 		]);
 		$this->load->view('bottom');
