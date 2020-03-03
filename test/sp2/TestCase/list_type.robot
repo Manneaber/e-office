@@ -1,12 +1,12 @@
-*** Settings ***
+* Settings *
 Library    SeleniumLibrary
 
-*** Variables ***
+* Variables *
 ${URL}    http://10.199.66.227/SoftEn2020/Sec01/CSEnterprise/showtype	
 ${BROWSER}    Chrome
 ${DELAY}    0.5
 
-*** Test Cases ***
+* Test Cases *
 
 TC01 Open Browser List_Type
 	Set Selenium Speed    ${DELAY}
