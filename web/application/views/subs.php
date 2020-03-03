@@ -52,7 +52,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <div class="modal-body">
           <div class="form-group">
             <label for="listid" class="col-form-label">รหัสครุภัณฑ์:</label>
-            <input type="text" class="form-control" name="listid" required pattern="[^a-zA-Zก-ฮ]>
+            <input type="text" class="form-control" name="listid" required>
           </div>
           <div class="form-group">
             <label for="spec" class="col-form-label">คุณสมบัติครุภัณฑ์*:</label>

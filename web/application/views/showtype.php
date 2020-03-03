@@ -21,7 +21,7 @@
                     <form action="<?=base_url('Showtype/add_type')?>" method="POST">
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">รหัสประเภทของครุภัณฑ์:</label>
-                        <input type="text" class="form-control" id="type_id" name="type_id" required pattern="[01-99][^a-zA-Zก-ฮ]>
+                        <input type="text" class="form-control" id="type_id" name="type_id" required>
                     </div>
                     <div class="form-group">
                         <label for="message-text" class="col-form-label">ประเภทของครุภัณฑ์:</label>
@@ -67,7 +67,7 @@
                             <form action="<?=base_url('Showtype/update')?>" method="post">
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">รหัสประเภทของครุภัณฑ์:</label>
-                                    <input type="text" class="form-control" id="type_id" required pattern="[01-99][^a-zA-Zก-ฮ] name="type_id" value="<?=$row->type_id;?>">
+                                    <input type="text" class="form-control" id="type_id" required name="type_id" value="<?=$row->type_id;?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label">ประเภทของครุภัณฑ์:</label>
