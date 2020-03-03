@@ -13,7 +13,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			<div class="row" style="height: 100%;">
 				<div class="col" style="height: 100%;">
 					<div class="top-nav-row float-left">
-						<ol class="breadcrumb">
+						<?php
+							if (isset($back)) {
+								echo '<a href="'.$back.'" class="btn float-left btn-dark" style="height: 100%; margin-right: 15px;"><</a>';
+							}
+						?>
+						<ol class="breadcrumb float-left">
 							<?= $path ?>
 						</ol>
 					</div>
