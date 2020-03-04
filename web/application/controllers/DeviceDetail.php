@@ -18,7 +18,7 @@ class DeviceDetail extends CI_Controller
 				'คลัง' => base_url('showtype'),
 				$query['type']->type_name => base_url('device/' . $query['type']->type_id),
 				$this->DeviceDetailModel->get_device_sub_name($query['details']->list_subid) => base_url('devicesub/' . $query['details']->list_subid),
-				$list_id => '#',
+				"คพ." . str_replace("_", "/", $list_id) => '#',
 			]),
 			'back' => base_url('devicesub/' . $query['details']->list_subid),
 		]);

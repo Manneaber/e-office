@@ -54,9 +54,12 @@ class DeviceDetailModel extends CI_Model
         if ($inp['perm3'] == 4) {
             $perm += 4;
         }
+
+        $list_id = str_replace("/", "_", $inp['listid']);
+        $list_id = str_replace("คพ.", "", $list_id);
         
         $this->db->insert('device_list', [
-            'list_id' => $inp['listid'],
+            'list_id' => $list_id,
             'list_spec' => $inp['spec'],
             'list_note' => $inp['note'],
             'list_location' => $inp['location'],
