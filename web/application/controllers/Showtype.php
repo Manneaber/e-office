@@ -34,6 +34,7 @@ class Showtype extends CI_Controller
 
 	public function add_type()
 	{
+		$data = new stdClass();
 		$type_id = $this->input->post('type_id');
 		$type_name = $this->input->post('type_name');
 
@@ -63,6 +64,7 @@ class Showtype extends CI_Controller
 
 	public function update()
 	{
+		$data = new stdClass();
 		$type_id = $this->input->post('type_id');
 		$type_name = $this->input->post('type_name');
 		$this->Showtype_model->update_type($type_id);
@@ -75,8 +77,25 @@ class Showtype extends CI_Controller
 
 	public function delete($type_id)
 	{
-		$this->Showtype_model->delete_type($type_id);
-		$data = $this->db->delete('device_type', array('type_id' => $type_id));
-		redirect(base_url('showtype'));
+		$data = new stdClass();
+		$data = $this->Showtype_model->delete_type($type_id);	
+		if ($data == 0) {
+			echo '<script language="javascript" type="text/javascript"> 
+					alert("สำเร็จ");
+					window.location.assign("http://localhost/e-office/web/showtype");
+				</script>';
+			exit;
+		} else if($data == 1) {
+			echo '<script language="javascript" type="text/javascript"> 
+					alert("ไม่สำเร็จ");
+					window.location.assign("http://localhost/e-office/web/showtype");
+        		</script>';
+			exit;
+		}
 	}
+
+	public function hidden_data_type($type_id)
+    {
+        $data['query']=$this->Showtype_model->hidden_type($type_id);
+    }
 }

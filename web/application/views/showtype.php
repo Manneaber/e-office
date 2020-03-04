@@ -85,8 +85,46 @@
                     </div>
                     </div>
                     <a href="<?= base_url('Showtype/delete/' . $row->type_id ) ?>"  type="button" class="btn btn-outline-danger" name="delete">ลบ</a>                    
+                
+                    <!-- Button  modal hidden data device sub-->
+                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#messageHidden<?php echo $row->type_id; ?>">
+                            ลบ
+                    </button>
+
                 </div>
             </div>
+
+            <!-- Modal hidden-->
+            <div id="messageHidden<?php echo $row->type_id; ?>" class="modal fade" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title " id="editModalLabel" name="editModalLabel">ลบอุปกรณ์</h5>
+                                <button id="closeModal" name="closeModal" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form action="<?php echo base_url('Showtype/hidden_data_type/').$row->type_id; ?>" method="post">
+
+                                <div class="modal-body">
+                                    <p style="text-align: center">คุณต้องการลบอุปกรณ์หรือไม่ ?</p>
+                                    <input type="hidden" class="form-control" id="type_name" name="type_name" value="<?= $row->type_name ?>">
+                                    <input type="hidden" class="form-control" id="type_id" name="type_id" value="<?= $row->type_id ?>">
+                                    
+                                    <input type="hidden" class="form-control" id="remove_type" name="remove_type" value="<?php echo $row->remove_type = 1 ?>">
+
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button id="close" name="close" type="button" class="btn btn-success" data-dismiss="modal">ยกเลิก</button>
+                                    <button id="submit" name="submit" type="submit" class="btn btn-danger ">บันทึก</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
         </div>
         <?php  }   ?>
             
