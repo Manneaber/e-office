@@ -84,7 +84,7 @@
                         </div>
                     </div>
                     </div>
-                    <a href="<?= base_url('Showtype/delete/' . $row->type_id ) ?>"  type="button" class="btn btn-outline-danger" name="delete">ลบ</a>                    
+                    <!--a href="<//?= base_url('Showtype/delete/' . $row->type_id ) ?>"  type="button" class="btn btn-outline-danger" name="delete">ลบ</a-->                    
                 
                     <!-- Button  modal hidden data device sub-->
                     <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#messageHidden<?php echo $row->type_id; ?>">
