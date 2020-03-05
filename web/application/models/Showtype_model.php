@@ -30,9 +30,9 @@ class Showtype_model extends CI_Model {
         $this->db->from('device_type');
         if($type_id){
             $this->db->where('type_id' , $type_id);
-            $this->db->where('remove_type',0);
+            
         }
-        
+        $this->db->where('remove_type',0);
         $query = $this->db->get();
         return $query->result();
 
@@ -92,12 +92,12 @@ class Showtype_model extends CI_Model {
         if($query)
 		{
             //echo 'update success';
-            redirect(base_url('device/').$data['sub_type']);
+            redirect(base_url('showtype/'));
             
 		}else
 		{
-            echo 'update error';
-            redirect(base_url('device/').$data['sub_type']);
+            //echo 'update error';
+            redirect(base_url('showtype/'));
 		}
     }
 }
