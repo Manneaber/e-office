@@ -56,4 +56,4 @@ $route['translate_uri_dashes'] = FALSE;
 $route['device/(:num)'] = "device/index/$1";
 $route['devicesub/(:num)'] = "devicesub/index/$1";
 $route['devicesub/hide/(:num)/(:num)'] = "devicesub/hide/$1/$2";
-$route['devicedetail/(:num)'] = "devicedetail/index/$1";
+$route['devicedetail/(.+)'] = "devicedetail/index/$1";

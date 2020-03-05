@@ -21,15 +21,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
       <?php
       foreach ($details as $detail) {
         echo "<tr>
-                <th scope='row'><a href='" . base_url('devicedetail/') . $detail->list_id . "'>$detail->list_id</a></th>
+                <th scope='row'><a href='" . base_url('devicedetail/') . $detail->list_id . "'>คพ." . str_replace("_", "/", $detail->list_id) . "</a></th>
                 <td>$detail->list_spec</td>
                 <td>$detail->list_status_str</td>
                 <td>$detail->list_permission_str</td>
                 <td>$detail->list_location</td>
                 <td>$detail->list_note</td>
                 <td>
-                    <button class='btn btn-warning' data-toggle='modal' data-target='#editModel$detail->list_id'><img src='".base_url('static/app/img/white-gear-icon-png-12.png')."' class='size-logo rounded-circle ' alt='edit'></button>
-                    <a href='" . base_url('devicesub/hide/' . $sub_id . "/" . $detail->list_id) . "' class='btn btn-danger'><img src='".base_url('static/app/img/trash-2-xxl.png')."' class='size-logo rounded-circle ' alt='remove'></a>
+                    <button class='btn btn-warning' data-toggle='modal' data-target='#editModel$detail->list_id'><img src='" . base_url('static/app/img/white-gear-icon-png-12.png') . "' class='size-logo rounded-circle ' alt='edit'></button>
+                    <a href='" . base_url('devicesub/hide/' . $sub_id . "/" . $detail->list_id) . "' class='btn btn-danger'><img src='" . base_url('static/app/img/trash-2-xxl.png') . "' class='size-logo rounded-circle ' alt='remove'></a>
                 </td>
             </tr>";
       }
@@ -52,7 +52,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <div class="modal-body">
           <div class="form-group">
             <label for="listid" class="col-form-label">รหัสครุภัณฑ์:</label>
-            <input type="text" class="form-control" name="listid" required pattern="[0-9]+">
+            <input type="text" class="form-control" name="listid" required>
           </div>
           <div class="form-group">
             <label for="spec" class="col-form-label">คุณสมบัติครุภัณฑ์*:</label>
