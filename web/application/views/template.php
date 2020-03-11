@@ -61,7 +61,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					</a>
 				</li>
 				<li class="list-group-item">
-					<a href="#">
+					<a href="<?= base_url('repair') ?>">
 						<div class="icon-img rounded-circle"></div>
 						<div class="title">ซ่อมบำรุง</div>
 						<div class="action">></div>
