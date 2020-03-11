@@ -3,7 +3,7 @@
         <div class="intro"><br>
             <h2 class="text-center"><strong>แจ้งซ่อมครุภัณฑ์</strong></h2>
             <p class="text-center">คณะวิทยาศาสตร์ มหาวิทยาลัยขอนแก่น<br></p>
-            <p class="d-xl-flex justify-content-xl-center align-items-xl-center">Faculty of Science,&nbsp;Khon Kaen&nbsp;University<br></p>
+            <p class="text-center">Faculty of Science,&nbsp;Khon Kaen&nbsp;University<br></p>
         </div>
         <div class="col mb-3">
             <form>
