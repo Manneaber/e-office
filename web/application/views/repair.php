@@ -8,11 +8,32 @@
         <div class="col mb-3">
             <form>
                 <div class="form-group row">
-                    <label for="inputId" class="col-sm-2 col-form-label">รหัสครุภัณฑ์ : </label>
+                    <label for="" class="col-sm-2 col-form-label">ประเภทของครุภัณฑ์ : </label>
                     <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputId">
+                        <select class="form-control">
+                            <option>น้อย</option>
+                        </select>
                     </div>
                 </div>
+
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label">รายการของครุภัณฑ์ : </label>
+                    <div class="col-sm-10">
+                        <select class="form-control">
+                            <option>น้อย</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label">รหัสของครุภัณฑ์ : </label>
+                    <div class="col-sm-10">
+                        <select class="form-control">
+                            <option>น้อย</option>
+                        </select>
+                    </div>
+                </div>
+
                 <div class="form-group row">
                     <label for="location" class="col-sm-2 col-form-label">สถานที่ : </label>
                     <div class="col-sm-10">

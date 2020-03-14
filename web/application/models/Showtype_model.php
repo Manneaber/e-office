@@ -30,12 +30,10 @@ class Showtype_model extends CI_Model {
         $this->db->from('device_type');
         if($type_id){
             $this->db->where('type_id' , $type_id);
-            
         }
         $this->db->where('remove_type',0);
         $query = $this->db->get();
         return $query->result();
-
     }
 
     public function update_type($type_id){
@@ -56,9 +54,6 @@ class Showtype_model extends CI_Model {
         }else{
             echo 'update data error';
         }
-
-
-
     }
     
     public function delete_type($type_id){
