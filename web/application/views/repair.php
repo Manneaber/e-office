@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">ความร่งด่วนของการซ่อม : </label>
+                    <label for="" class="col-sm-2 col-form-label">ความเร่งด่วนของการซ่อม : </label>
                     <div class="col-sm-10">
                         <select class="form-control">
                             <option>น้อย</option>
