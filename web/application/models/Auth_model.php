@@ -63,7 +63,7 @@ class Auth_model extends CI_Model
       return 99;
     }
 
-    $this->db->select('uid');
+    $this->db->select('permission');
     $this->db->from('user');
     $this->db->where([
       'uid' => $data['uid'],
@@ -75,7 +75,7 @@ class Auth_model extends CI_Model
     if (sizeof($result) == 0) {
       return 1;
     } else {
-      return 0;
+      return $result[0]->permission;
     }
   }
 
