@@ -14,7 +14,9 @@ class Showtype extends CI_Controller
 	public function index()
 	{
 		$perm = $this->Auth_model->check();
-		if ($perm != 1 || $perm != 2 || $perm != 3 || $perm != 99) redirect(base_url());
+		echo $perm;
+		echo $perm != 99 ? "true" : "false";
+		if ($perm != 1 && $perm != 2 && $perm != 3 && $perm != 99) // redirect(base_url());
 
 		$data = new stdClass();
 		$data->query = $this->Showtype_model->list_type();
