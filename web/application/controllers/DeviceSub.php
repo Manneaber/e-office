@@ -13,7 +13,7 @@ class DeviceSub extends CI_Controller
 	public function index($sub_id)
 	{
 		$perm = $this->Auth_model->check();
-		if ($perm != 1 || $perm != 2 || $perm != 3) redirect(base_url());
+		if ($perm != 1 || $perm != 2 || $perm != 3 || $perm != 99) redirect(base_url());
 
 		$query['sub_id'] = $sub_id;
 		$query['type'] = $this->DeviceDetailModel->get_device_type($sub_id)[0];
@@ -101,7 +101,7 @@ class DeviceSub extends CI_Controller
 	{
 		$perm = $this->Auth_model->check();
 		if ($perm != 99) redirect(base_url());
-		
+
 		$this->DeviceDetailModel->edit_list();
 		redirect(base_url('devicesub/' . $_POST['subid']));
 	}

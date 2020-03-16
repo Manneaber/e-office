@@ -14,7 +14,7 @@ class Repair extends CI_Controller
 	public function index()
 	{
 		$perm = $this->Auth_model->check();
-		if ($perm != 1 || $perm != 2 || $perm != 3) redirect(base_url());
+		if ($perm != 1 || $perm != 2 || $perm != 3 || $perm != 99) redirect(base_url());
 
 		$this->load->view('header', ['title' => 'Repair']);
 		$this->load->view('template', [

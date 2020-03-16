@@ -15,7 +15,7 @@ class Device extends CI_Controller
     public function index($type_id)
     {
         $perm = $this->Auth_model->check();
-        if ($perm != 1 || $perm != 2 || $perm != 3) redirect(base_url());
+        if ($perm != 1 || $perm != 2 || $perm != 3 || $perm != 99) redirect(base_url());
 
         $data['type_id'] = $type_id;
         $data['type_name'] = $this->main_model->fetch_type_name($type_id);

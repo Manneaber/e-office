@@ -13,7 +13,7 @@ class DeviceDetail extends CI_Controller
 	public function index($list_id)
 	{
 		$perm = $this->Auth_model->check();
-		if ($perm != 1 || $perm != 2 || $perm != 3) redirect(base_url());
+		if ($perm != 1 || $perm != 2 || $perm != 3 || $perm != 99) redirect(base_url());
 
 		$query['list_id'] = $list_id;
 		$query['details'] = $this->DeviceDetailModel->get_device_detail($list_id)[0];
