@@ -7,11 +7,14 @@ class Showtype extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model("Showtype_model");
+		$this->load->model('Auth_model');
 		date_default_timezone_set("Asia/Bangkok");
 	}
 
 	public function index()
 	{
+		$perm = $this->Auth_model->check();
+		if ($perm != 1 || $perm != 2 || $perm != 3) redirect(base_url());
 
 		$data = new stdClass();
 		$data->query = $this->Showtype_model->list_type();
@@ -34,6 +37,9 @@ class Showtype extends CI_Controller
 
 	public function add_type()
 	{
+		$perm = $this->Auth_model->check();
+		if ($perm != 99) redirect(base_url());
+
 		$data = new stdClass();
 		$type_id = $this->input->post('type_id');
 		$type_name = $this->input->post('type_name');
@@ -64,6 +70,9 @@ class Showtype extends CI_Controller
 
 	public function update()
 	{
+		$perm = $this->Auth_model->check();
+		if ($perm != 99) redirect(base_url());
+
 		$data = new stdClass();
 		$type_id = $this->input->post('type_id');
 		$type_name = $this->input->post('type_name');
@@ -77,15 +86,18 @@ class Showtype extends CI_Controller
 
 	public function delete($type_id)
 	{
+		$perm = $this->Auth_model->check();
+		if ($perm != 99) redirect(base_url());
+
 		$data = new stdClass();
-		$data = $this->Showtype_model->delete_type($type_id);	
+		$data = $this->Showtype_model->delete_type($type_id);
 		if ($data == 0) {
 			echo '<script language="javascript" type="text/javascript"> 
 					alert("สำเร็จ");
 					window.location.assign("http://localhost/e-office/web/showtype");
 				</script>';
 			exit;
-		} else if($data == 1) {
+		} else if ($data == 1) {
 			echo '<script language="javascript" type="text/javascript"> 
 					alert("ไม่สำเร็จ");
 					window.location.assign("http://localhost/e-office/web/showtype");
@@ -95,7 +107,10 @@ class Showtype extends CI_Controller
 	}
 
 	public function hidden_data_type($type_id)
-    {
-        $data['query']=$this->Showtype_model->hidden_type($type_id);
-    }
+	{
+		$perm = $this->Auth_model->check();
+		if ($perm != 99) redirect(base_url());
+
+		$data['query'] = $this->Showtype_model->hidden_type($type_id);
+	}
 }

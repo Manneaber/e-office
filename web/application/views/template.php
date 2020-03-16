@@ -32,10 +32,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 								<img src="<?= base_url('/static/app/img/user.png') ?>" width="30px" draggable="false">
 							</a>
 							<div class="dropdown-menu-c hidden" id="userActionDropdown">
-								<h6 class="dropdown-header">Tinta Chanakan Tippochana</h6>
+								<h6 class="dropdown-header"><?=$session['name']?></h6>
 								<a class="dropdown-item" href="#">Profile</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#">Logout</a>
+								<a class="dropdown-item" href="<?=base_url('auth/logout')?>">Logout</a>
 							</div>
 						</div>
 					</div>
@@ -68,9 +68,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					</a>
 				</li>
 				<li class="list-group-item">
-					<a href="#">
+					<a href="<?=base_url('repairlist')?>">
 						<div class="icon-img rounded-circle"></div>
-						<div class="title">ผู้ใช้บริการ</div>
+						<div class="title">รายการแจ้งซ่อม</div>
 						<div class="action">></div>
 					</a>
 				</li>

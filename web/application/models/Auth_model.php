@@ -17,12 +17,13 @@ class Auth_model extends CI_Model
     );
 
     if (strlen($data['user']) > 30 || strlen($data['pass']) > 50) {
+      $this->session->set_flashdata('err', 'Username or password too long');
       return 99;
     }
 
     $enc_pass = hash('sha3-256', $data['pass']);
 
-    $this->db->select('uid');
+    $this->db->select('uid, name');
     $this->db->from('user');
     $this->db->where([
       'username' => $data['user'],
@@ -32,6 +33,7 @@ class Auth_model extends CI_Model
     $result = $this->db->get()->result();
 
     if (sizeof($result) == 0) {
+      $this->session->set_flashdata('err', 'User or pass missmatch');
       return 1;
     }
 
@@ -42,11 +44,13 @@ class Auth_model extends CI_Model
     ]);
 
     if ($query == 0) {
+      $this->session->set_flashdata('err', 'Unable to update db');
       return 2;
     }
 
     $this->session->set_userdata([
       'uid' => $result[0]->uid,
+      'name' => $result[0]->name,
       'token' => $token
     ]);
     return 0;
@@ -60,7 +64,8 @@ class Auth_model extends CI_Model
       !isset($data['uid']) || !isset($data['token']) ||
       strlen($data['uid']) == 0 || strlen($data['token']) == 0
     ) {
-      return 99;
+      $this->session->set_flashdata('err', 'Invalid Token');
+      return -1;
     }
 
     $this->db->select('permission');
@@ -73,7 +78,8 @@ class Auth_model extends CI_Model
     $result = $this->db->get()->result();
 
     if (sizeof($result) == 0) {
-      return 1;
+      $this->session->set_flashdata('err', 'Invalid Token');
+      return -1;
     } else {
       return $result[0]->permission;
     }
@@ -87,6 +93,7 @@ class Auth_model extends CI_Model
       !isset($data['uid']) || !isset($data['token']) ||
       strlen($data['uid']) == 0 || strlen($data['token']) == 0
     ) {
+      $this->session->set_flashdata('err', 'Username or password too long');
       return 99;
     }
 
@@ -100,6 +107,7 @@ class Auth_model extends CI_Model
     $result = $this->db->get()->result();
 
     if (sizeof($result) == 0) {
+      $this->session->set_flashdata('err', 'Invalid Token');
       return 1;
     }
 
@@ -108,6 +116,7 @@ class Auth_model extends CI_Model
     ]);
 
     if ($query == 0) {
+      $this->session->set_flashdata('err', 'Unable to update database');
       return 2;
     }
 
