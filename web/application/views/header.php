@@ -14,5 +14,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" href="<?=base_url('/static/bootstrap-4.4.1-dist/css/bootstrap.min.css')?>">
     <link rel="stylesheet" href="<?=base_url('/static/jquery-confirm.min.css')?>">
     <link rel="stylesheet" href="<?=base_url('/static/app/css/style.css')?>">
+    <script src="<?=base_url('/static/jquery/jquery-3.4.1.min.js')?>"></script>
 </head>
 <body>
