@@ -35,6 +35,9 @@ class Repair extends CI_Controller
 
 	function fetch_device_sub()
 	{
+		$perm = $this->Auth_model->check();
+		if ($perm != 1 && $perm != 2 && $perm != 3 && $perm != 99) redirect(base_url());
+
 		if ($this->input->post('sub_type')) {
 			echo $this->Repair_model->fetch_device_sub($this->input->post('sub_type'));
 		}
@@ -42,6 +45,9 @@ class Repair extends CI_Controller
 
 	function fetch_device_list()
 	{
+		$perm = $this->Auth_model->check();
+		if ($perm != 1 && $perm != 2 && $perm != 3 && $perm != 99) redirect(base_url());
+
 		if ($this->input->post('list_id')) {
 			echo $this->Repair_model->fetch_device_list($this->input->post('list_id'));
 		}
@@ -49,6 +55,9 @@ class Repair extends CI_Controller
 
 	function device_list_location()
 	{
+		$perm = $this->Auth_model->check();
+		if ($perm != 1 && $perm != 2 && $perm != 3 && $perm != 99) redirect(base_url());
+
 		if ($this->input->post('list_id')) {
 			echo $this->Repair_model->device_list_location($this->input->post('list_id'));
 		}
@@ -56,12 +65,15 @@ class Repair extends CI_Controller
 
 	function add_repair()
 	{
+		$perm = $this->Auth_model->check();
+		if ($perm != 1 && $perm != 2 && $perm != 3 && $perm != 99) redirect(base_url());
 
 		$tmp_data = array(
 			'req_deviceid' => $this->input->post('device_list'),
 			'req_location' => $this->input->post('location'),
 			'req_symptom' => $this->input->post('inputBreakdown'),
-			'req_priority' => $this->input->post('priority')
+			'req_userpriority' => $this->input->post('priority'),
+			'req_user' => $this->session->userdata()['uid'],
 		);
 
 		$this->Repair_model->add_repair($tmp_data);
