@@ -16,7 +16,7 @@ class RepairList extends CI_Controller
 	{
 		$perm = $this->Auth_model->check();
 		if ($perm != 99) redirect(base_url());
-		
+
 		$this->db->select('*');
 		$this->db->from('maintenance_request');
 		$this->db->join('device_list', 'device_list.list_id = maintenance_request.req_deviceid');
@@ -50,6 +50,68 @@ class RepairList extends CI_Controller
 		]);
 
 		$this->load->view('bottom');
+	}
+
+	public function priority()
+	{
+		error_reporting(0);
+		header('Content-Type: application/json');
+
+		$arr = $this->input->post(array('arr'), TRUE);
+
+		if ($arr['arr'] == null) {
+			http_response_code(400);
+			die(json_encode(array('code' => 400, 'data' => 'unmeet requirement')));
+		}
+
+		$itemIds = json_decode($arr['arr']);
+
+		$this->db->trans_start();
+
+		foreach ($itemIds as $priority => $itemId) {
+			$this->db->set('req_priority', $priority + 1);
+			$this->db->where('req_id', $itemId);
+			$this->db->update('maintenance_request');
+		}
+		$this->db->trans_complete();
+
+		if ($this->db->trans_status() === FALSE) {
+			$this->db->trans_rollback();
+			http_response_code(500);
+			die(json_encode(array('code' => 500, 'data' => 'an error occurred when updating database')));
+		}
+
+		$this->db->trans_commit();
+
+		http_response_code(200);
+		echo json_encode(array('code' => 200, 'data' => 'done'));
+	}
+
+	public function close()
+	{
+		error_reporting(0);
+		header('Content-Type: application/json');
+
+		$arr = $this->input->post(array('ticID'), TRUE);
+
+		if ($arr['ticID'] == null) {
+			http_response_code(400);
+			die(json_encode(array('code' => 400, 'data' => 'unmeet requirement')));
+		}
+
+		$ticketID = $arr['ticID'];
+
+		$this->db->set('req_closed', 1);
+		$this->db->where('req_id', $ticketID);
+		$this->db->update('maintenance_request');
+
+		if ($this->db->error()['code'] != 0) {
+			http_response_code(500);
+			die(json_encode(array('code' => 500, 'data' => 'an error occurred when updating database')));
+		}
+
+		http_response_code(200);
+		echo json_encode(array('code' => 200, 'data' => 'done'));
 	}
 
 	/*
