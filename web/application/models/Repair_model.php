@@ -1,19 +1,22 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Repair_model extends CI_Model {
+class Repair_model extends CI_Model
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->load->database();
         date_default_timezone_set("Asia/Bangkok");
     }
 
-    public function list_type(){
-        $this->db->where('remove_type',0);
+    public function list_type()
+    {
+        $this->db->where('remove_type', 0);
         $this->db->order_by("type_id", "ASC");
         $query = $this->db->get("device_type");
-       
+
         return $query->result();
     }
 
@@ -26,51 +29,52 @@ class Repair_model extends CI_Model {
         $query = $this->db->get('device_sub');
 
         $output = '<option value="">เลือกรายการของครุภัณฑ์</option>';
-        foreach($query->result() as $row)
-        {
-            $output .= '<option value="'.$row->sub_id.'">'.$row->sub_name.'</option>';
+        foreach ($query->result() as $row) {
+            $output .= '<option value="' . $row->sub_id . '">' . $row->sub_name . '</option>';
         }
-            return $output;
+        return $output;
     }
 
-    public function fetch_device_list($list_subid) {
+    public function fetch_device_list($list_subid)
+    {
 
         $this->db->where('list_removed', 0);
         $this->db->where('list_subid', $list_subid);
         $this->db->order_by('list_id', 'ASC');
         $query = $this->db->get('device_list');
-        
+
 
         $output = '<option value="">เลือกรหัสของครุภัณฑ์</option>';
-        foreach($query->result() as $row)
-        {
-            $output .= '<option value="'.$row->list_id.'">'.'คพ.'.$row->list_id.'</option>';
+        foreach ($query->result() as $row) {
+            $output .= '<option value="' . $row->list_id . '">' . 'คพ.' . $row->list_id . '</option>';
         }
         return $output;
     }
 
-    public function device_list_location($list_subid) {
-        $this->db->select('*');
-		$this->db->from('device_list');
-		$this->db->where([
-			'list_removed' => 0,
-			'list_subid' => $list_subid,
-		]);
-		$this->db->order_by('list_id', 'asc');
-		$query = $this->db->get();
+    public function device_list_location($list_id)
+    {
+        $this->db->select('list_location');
+        $this->db->from('device_list');
+        $this->db->where('list_id', $list_id);
+        $this->db->order_by('list_id', 'asc');
+
+        $res = $this->db->get()->result();
+
+        if (sizeof($res) > 0) {
+            return $res[0]->list_location;
+        } else {
+            return '';
+        }
     }
 
     public function add_repair($data)
     {
-        $query = $this->db->insert('maintenance_request',$data);
+        $query = $this->db->insert('maintenance_request', $data);
 
-        if($query)
-        {
+        if ($query) {
             echo 'insert data success';
-        }else{
+        } else {
             echo 'insert data error';
         }
     }
 }
-
-

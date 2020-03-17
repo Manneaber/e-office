@@ -108,21 +108,8 @@
                             list_id: list_id
                         },
                         success: function(data) {
+                            $('#location').html('');
                             $('#device_list').html(data);
-                            if (list_id != '') {
-                                $.ajax({
-                                    url: "<?php echo base_url(); ?>Repair/device_list_location",
-                                    method: "POST",
-                                    data: {
-                                        list_id: list_id
-                                    },
-                                    success: function(data) {
-                                        $('#location').html(data);
-                                    }
-                                });
-                            } else {
-                                $('#location').html('');
-                            }
                         }
                     });
                 } else {
@@ -130,6 +117,19 @@
                 }
             });
 
+            $('#device_list').change(() => {
+                var list_id = $('#device_list').val();
+                $.ajax({
+                    url: "<?php echo base_url(); ?>Repair/device_list_location",
+                    method: "POST",
+                    data: {
+                        list_id: list_id
+                    },
+                    success: (data) => {
+                        $('#location').val(data);
+                    }
+                });
+            });
         });
     </script>
 </body>
