@@ -3,9 +3,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class DeviceDetail extends CI_Controller
 {
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('DeviceDetailModel');
+		$this->load->model('Auth_model');
+	}
+
 	public function index($list_id)
 	{
-		$this->load->model('DeviceDetailModel');
+		$perm = $this->Auth_model->check();
+		if ($perm != 1 && $perm != 2 && $perm != 3 && $perm != 99) redirect(base_url());
 
 		$query['list_id'] = $list_id;
 		$query['details'] = $this->DeviceDetailModel->get_device_detail($list_id)[0];

@@ -3,9 +3,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class DeviceSub extends CI_Controller
 {
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('DeviceDetailModel');
+		$this->load->model('Auth_model');
+	}
+
 	public function index($sub_id)
 	{
-		$this->load->model('DeviceDetailModel');
+		$perm = $this->Auth_model->check();
+		if ($perm != 1 && $perm != 2 && $perm != 3 && $perm != 99) redirect(base_url());
 
 		$query['sub_id'] = $sub_id;
 		$query['type'] = $this->DeviceDetailModel->get_device_type($sub_id)[0];
@@ -18,19 +26,19 @@ class DeviceSub extends CI_Controller
 			switch ($query['details'][$i]->list_status) {
 				case 0:
 					$list_status_str = "ว่าง";
-				break;
+					break;
 				case 1:
 					$list_status_str = "ไม่ว่าง";
-				break;
+					break;
 				case 2:
 					$list_status_str = "จอง";
-				break;
+					break;
 				case 3:
 					$list_status_str = "ซ่อมบำรุง";
-				break;
+					break;
 				case 4:
 					$list_status_str = "ไม่สามารถยืมได้";
-				break;
+					break;
 			}
 
 			$query['details'][$i]->list_status_str = $list_status_str;
@@ -73,20 +81,27 @@ class DeviceSub extends CI_Controller
 
 	public function add()
 	{
-		$this->load->model('DeviceDetailModel');
+		$perm = $this->Auth_model->check();
+		if ($perm != 99) redirect(base_url());
+
 		$this->DeviceDetailModel->insert_list();
 		redirect(base_url('devicesub/' . $_POST['subid']));
 	}
 
 	public function hide($sub_id, $list_id)
 	{
-		$this->load->model('DeviceDetailModel');
+		$perm = $this->Auth_model->check();
+		if ($perm != 99) redirect(base_url());
+
 		$this->DeviceDetailModel->hide_list($list_id);
 		redirect(base_url('devicesub/' . $sub_id));
 	}
 
-	public function edit() {
-		$this->load->model('DeviceDetailModel');
+	public function edit()
+	{
+		$perm = $this->Auth_model->check();
+		if ($perm != 99) redirect(base_url());
+
 		$this->DeviceDetailModel->edit_list();
 		redirect(base_url('devicesub/' . $_POST['subid']));
 	}
