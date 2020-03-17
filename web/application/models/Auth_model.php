@@ -56,6 +56,14 @@ class Auth_model extends CI_Model
     return 0;
   }
 
+  /**
+   * -1 = not login
+   * 0 = no role
+   * 1 = student
+   * 2 = teacher
+   * 3 = staff
+   * 99 = admin
+   */
   public function check()
   {
     $data = $this->session->userdata();
