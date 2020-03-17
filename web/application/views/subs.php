@@ -1,10 +1,17 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+
+$perm = $this->Auth_model->check();
 ?>
 <div class="container" style="margin-top: 15px;">
-  <button class="btn btn-success float-right" style="margin-bottom: 15px;" data-toggle="modal" data-target="#addModel">
-    เพิ่มครุภัณฑ์ใหม่
-  </button>
+
+  <?php
+  if ($perm == 99) {
+    echo '<button class="btn btn-success float-right" style="margin-bottom: 15px;" data-toggle="modal" data-target="#addModel">
+            เพิ่มครุภัณฑ์ใหม่
+          </button>';
+  }
+  ?>
   <table class="table">
     <thead class="thead-color">
       <tr style="color: aliceblue">
@@ -14,7 +21,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <th scope="col" width="112px">สิทธิการยืม</th>
         <th scope="col" width="112px">ตำแหน่งที่ตั้ง</th>
         <th scope="col" width="230px">หมายเหตุ</th>
-        <th scope="col" width="140px">การจัดการ</th>
+        <?php
+        if ($perm == 99) {
+          echo '<th scope="col" width="140px">การจัดการ</th>';
+        }
+        ?>
       </tr>
     </thead>
     <tbody>
@@ -27,11 +38,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <td>$detail->list_permission_str</td>
                 <td>$detail->list_location</td>
                 <td>$detail->list_note</td>
-                <td>
-                    <button class='btn btn-warning' data-toggle='modal' data-target='#editModel$detail->list_id'><img src='" . base_url('static/app/img/white-gear-icon-png-12.png') . "' class='size-logo rounded-circle ' alt='edit'></button>
-                    <a href='" . base_url('devicesub/hide/' . $sub_id . "/" . $detail->list_id) . "' class='btn btn-danger'><img src='" . base_url('static/app/img/trash-2-xxl.png') . "' class='size-logo rounded-circle ' alt='remove'></a>
-                </td>
-            </tr>";
+                ";
+        if ($perm == 99) {
+          echo "<td>
+        <button class='btn btn-warning' data-toggle='modal' data-target='#editModel$detail->list_id'><img src='" . base_url('static/app/img/white-gear-icon-png-12.png') . "' class='size-logo rounded-circle ' alt='edit'></button>
+        <a href='" . base_url('devicesub/hide/' . $sub_id . "/" . $detail->list_id) . "' class='btn btn-danger'><img src='" . base_url('static/app/img/trash-2-xxl.png') . "' class='size-logo rounded-circle ' alt='remove'></a>
+    </td>";
+        }
+        echo "</tr>";
       }
       ?>
     </tbody>

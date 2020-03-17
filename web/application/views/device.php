@@ -1,13 +1,25 @@
+<?php
+$perm = $this->Auth_model->check();
+?>
+
 <div class="container" style="margin-top: 15px;">
-    <button name="addDevice" id="addDevice" type="button" class="btn btn-success float-right" data-toggle="modal" data-target=".bd-example-modal-lg" style="margin-bottom: 15px;">
-        เพิ่มอุปกรณ์
-    </button>
+    <?php
+    if ($perm == 99) {
+        echo '<button name="addDevice" id="addDevice" type="button" class="btn btn-success float-right" data-toggle="modal" data-target=".bd-example-modal-lg" style="margin-bottom: 15px;">
+                        เพิ่มอุปกรณ์
+                    </button>';
+    }
+    ?>
     <table class="table ">
         <thead class="thead-color">
             <tr style="color: aliceblue">
                 <th scope="col">รายการ</th>
-                <th scope="col">แก้ไข</th>
-                <th scope="col">ลบ</th>
+                <?php
+                if ($perm == 99) {
+                    echo '<th scope="col">แก้ไข</th>
+                        <th scope="col">ลบ</th>';
+                }
+                ?>
             </tr>
         </thead>
         <tbody>
@@ -15,22 +27,25 @@
                 <tr>
 
                     <td><a href="<?= base_url('devicesub/' . $rows->sub_id) ?>"><?php echo $rows->sub_name; ?></a></td>
-
-                    <td>
+                    <?php
+                    if ($perm == 99) {
+                        echo '<td>
                         <!-- Button  modal edit-->
-                        <button type="button" class="btn btn-edit" data-toggle="modal" data-target="#message<?php echo $rows->sub_id; ?>">
-                            <img src="<?=base_url('static/app/img/white-gear-icon-png-12.png')?>" class="size-logo rounded-circle " alt="edit">
+                        <button type="button" class="btn btn-edit" data-toggle="modal" data-target="#message' . $rows->sub_id . '">
+                            <img src="' . base_url('static/app/img/white-gear-icon-png-12.png') . '" class="size-logo rounded-circle " alt="edit">
                         </button>
 
                     </td>
                     <td>
 
                         <!-- Button  modal hidden data device sub-->
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#messageHidden<?php echo $rows->sub_id; ?>">
-                            <img src="<?=base_url('static/app/img/trash-2-xxl.png')?>" class="size-logo rounded-circle " alt="edit">
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#messageHidden' . $rows->sub_id . '">
+                            <img src="' . base_url('static/app/img/trash-2-xxl.png') . '" class="size-logo rounded-circle " alt="edit">
                         </button>
 
-                    </td>
+                    </td>';
+                    }
+                    ?>
                 </tr>
 
                 <!-- Modal edit-->

@@ -57,7 +57,7 @@ $perm = $this->Auth_model->check();
 					</a>
 				</li>
 				<?php
-				if ($perm == 99) { // $perm != 1 && $perm != 2 && $perm != 3 && $perm != 99
+				if ($perm == 1 || $perm == 2 || $perm == 3 || $perm == 99) { // $perm != 1 && $perm != 2 && $perm != 3 && $perm != 99
 					echo '<li class="list-group-item">
 					<a href="' . base_url('showtype') . '">
 						<div class="icon-img rounded-circle"></div>
