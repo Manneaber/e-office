@@ -1,5 +1,8 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+
+$perm = $this->Auth_model->check();
+
 ?>
 
 <div id="container-fluid">
@@ -32,10 +35,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 								<img src="<?= base_url('/static/app/img/user.png') ?>" width="30px" draggable="false">
 							</a>
 							<div class="dropdown-menu-c hidden" id="userActionDropdown">
-								<h6 class="dropdown-header"><?=$this->session->userdata()['name']?></h6>
+								<h6 class="dropdown-header"><?= $this->session->userdata()['name'] ?></h6>
 								<a class="dropdown-item" href="#">Profile</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="<?=base_url('auth/logout')?>">Logout</a>
+								<a class="dropdown-item" href="<?= base_url('auth/logout') ?>">Logout</a>
 							</div>
 						</div>
 					</div>
@@ -53,27 +56,37 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						<div class="action">></div>
 					</a>
 				</li>
-				<li class="list-group-item">
-					<a href="<?= base_url('showtype') ?>">
+				<?php
+				if ($perm == 99) { // $perm != 1 && $perm != 2 && $perm != 3 && $perm != 99
+					echo '<li class="list-group-item">
+					<a href="' . base_url('showtype') . '">
 						<div class="icon-img rounded-circle"></div>
 						<div class="title">คลัง</div>
 						<div class="action">></div>
 					</a>
-				</li>
-				<li class="list-group-item">
-					<a href="<?= base_url('repair') ?>">
+				</li>';
+				}
+
+				if ($perm == 1 || $perm == 2 || $perm == 3) {
+					echo '<li class="list-group-item">
+					<a href="' . base_url('repair') . '">
 						<div class="icon-img rounded-circle"></div>
-						<div class="title">ซ่อมบำรุง</div>
+						<div class="title">แจ้งซ่อม</div>
 						<div class="action">></div>
 					</a>
-				</li>
-				<li class="list-group-item">
-					<a href="<?=base_url('repairlist')?>">
+				</li>';
+				}
+
+				if ($perm == 99) { // $perm != 1 && $perm != 2 && $perm != 3 && $perm != 99
+					echo '<li class="list-group-item">
+					<a href="' . base_url('repairlist') . '">
 						<div class="icon-img rounded-circle"></div>
 						<div class="title">รายการแจ้งซ่อม</div>
 						<div class="action">></div>
 					</a>
-				</li>
+				</li>';
+				}
+				?>
 			</ul>
 		</div>
 		<div class="col-md-9 col-lg-10 body">
