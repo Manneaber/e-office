@@ -15,9 +15,7 @@ class Welcome extends CI_Controller {
 
 		$this->load->view('header', ['title' => 'Home']);
 		$this->load->view('template', [
-			'body' => $this->load->view('test', [
-				'session' => $this->session->userdata(),
-			], TRUE),
+			'body' => $this->load->view('test', [], TRUE),
 			'path' => makePath([
 				'หน้าหลัก' => '#',
 			]),

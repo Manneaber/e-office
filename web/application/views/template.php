@@ -32,7 +32,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 								<img src="<?= base_url('/static/app/img/user.png') ?>" width="30px" draggable="false">
 							</a>
 							<div class="dropdown-menu-c hidden" id="userActionDropdown">
-								<h6 class="dropdown-header"><?=$session['name']?></h6>
+								<h6 class="dropdown-header"><?=$this->session->userdata()['name']?></h6>
 								<a class="dropdown-item" href="#">Profile</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="<?=base_url('auth/logout')?>">Logout</a>
